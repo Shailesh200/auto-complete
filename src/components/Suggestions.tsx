@@ -1,5 +1,5 @@
-import { IProductInterface, ISuggestionProps } from '../constants/interfaces';
 import { highlightMatch } from '../utils/LayoutUtils';
+import { IProductInterface, ISuggestionProps } from '../constants/interfaces';
 
 const Suggestions = (props: ISuggestionProps) => {
     const { suggestions, inputValue, setState, productSelected } = props;
