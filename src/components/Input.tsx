@@ -11,7 +11,7 @@ const Input = (props: IInputProps) => {
                 value={searchtext}
                 onChange={handleInputChange}
             />
-            {(loading && !productSelected) && <div className="loading" />}
+            {(loading && !productSelected && searchtext) && <div className="loading" />}
         </div>
     );
 };
