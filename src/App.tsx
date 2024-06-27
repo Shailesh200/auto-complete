@@ -17,9 +17,10 @@ function App() {
     suggestions: [],
     loading: false,
     users: [],
+    productSelected: false
   });
   const [cache, setCache] = useState<{ [key: string]: [] }>({});
-  const { searchtext, suggestions, loading } = state;
+  const { searchtext, suggestions, loading, productSelected } = state;
   const debouncedValue = useDebounce<string>(searchtext, 500);
 
   useEffect(() => {
@@ -69,6 +70,7 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       searchtext: e.target.value,
+      productSelected: false,
     })
   }
 
@@ -82,10 +84,12 @@ function App() {
           searchtext={searchtext}
           handleInputChange={handleInputChange}
           loading={loading}
+          productSelected={productSelected}
         />
         <Suggestions
           suggestions={suggestions}
           inputValue={searchtext}
+          productSelected={productSelected}
           setState={setState}
         />
       </div>

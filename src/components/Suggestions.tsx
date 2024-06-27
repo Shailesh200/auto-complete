@@ -1,17 +1,11 @@
-import { IProductInterface } from '../constants/interfaces';
+import { IProductInterface, ISuggestionProps } from '../constants/interfaces';
 import { highlightMatch } from '../utils/LayoutUtils';
 
-interface ISuggestionProps {
-    suggestions: IProductInterface[];
-    setState: any;
-    inputValue: string;
-}
-
 const Suggestions = (props: ISuggestionProps) => {
-    const { suggestions, inputValue, setState } = props;
+    const { suggestions, inputValue, setState, productSelected } = props;
     return (
         <div className='suggestion-data'>
-            {suggestions.length > 0 && (
+            {suggestions.length > 0 && !productSelected && (
                 <div className="suggestion-list-wrapper">
                     {suggestions.map((user: IProductInterface) => (
                         <div
@@ -20,7 +14,8 @@ const Suggestions = (props: ISuggestionProps) => {
                             onClick={() => setState({
                                 searchtext: user.title,
                                 suggestions: [],
-                                loading: false
+                                loading: false,
+                                productSelected: true,
                             })}
                             dangerouslySetInnerHTML={{
                                 __html: highlightMatch(user.title, inputValue),

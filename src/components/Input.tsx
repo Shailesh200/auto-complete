@@ -1,7 +1,7 @@
 import { IInputProps } from "../constants/interfaces";
 
 const Input = (props: IInputProps) => {
-    const { searchtext, handleInputChange, loading } = props;
+    const { searchtext, handleInputChange, loading, productSelected } = props;
     return (
         <div className="input-container">
             <input
@@ -11,7 +11,7 @@ const Input = (props: IInputProps) => {
                 value={searchtext}
                 onChange={handleInputChange}
             />
-            {loading && <div className="loading" />}
+            {(loading && !productSelected) && <div className="loading" />}
         </div>
     );
 };

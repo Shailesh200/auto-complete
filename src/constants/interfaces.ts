@@ -8,10 +8,19 @@ export interface IProductInterface {
     title: string
 }
 
+export interface ISuggestionProps {
+    suggestions: IProductInterface[];
+    setState: any;
+    inputValue: string;
+    productSelected: boolean;
+}
+
+
 export interface IInputProps {
     searchtext: string;
     handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
     loading: boolean;
+    productSelected: boolean;
 }
 
 export type StateType = { [key: string]: any };
